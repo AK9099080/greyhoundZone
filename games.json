@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Brick Breaker",
+    "file": "brick-breaker.html",
+    "logo": "brick-breaker.png"
+  },
+  {
+    "name": "Neon Snake",
+    "file": "neon-snake.html",
+    "logo": "neon-snake.png"
+  },
+  {
+    "name": "Pong Blitz",
+    "file": "pong-blitz.html",
+    "logo": "pong-blitz.png"
+  }
+]

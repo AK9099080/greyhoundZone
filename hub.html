@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="hub-body">
+
+  <div class="crt-overlay" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header>
+    <img src="media/logo.png" alt="Site Logo" class="logo">
+    <h1>Game Hub</h1>
+  </header>
+
+  <div id="game-list"></div>
+
+  <script>
+    fetch("games.json")
+      .then(res => res.json())
+      .then(games => {
+        const container = document.getElementById("game-list");
+        games.forEach(game => {
+          const card = document.createElement("div");
+          card.className = "game-card";
+          card.innerHTML = `
+            <img src="media/${game.logo}" alt="${game.name}" class="game-logo">
+            <h3>${game.name}</h3>
+            <a href="games/${game.file}" class="play-btn">Play</a>
+          `;
+          container.appendChild(card);
+        });
+      });
+  </script>
+
+</body>
+</html>
