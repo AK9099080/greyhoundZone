@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Brick Breaker</title>
+<style>
+  body { margin:0; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+         background:#0b0e14; color:#ff4fa3; font-family:'JetBrains Mono', monospace; }
+  h1 { text-shadow:0 0 16px rgba(255,79,163,.5); letter-spacing:.06em; }
+  canvas { background:#0e1420; border:1px solid rgba(255,79,163,.3); box-shadow:0 0 30px rgba(255,79,163,.15); }
+  p { color:#7d8b93; font-size:.85rem; }
+  a { color:#4ce0d2; }
+</style>
+</head>
+<body>
+<h1>BRICK BREAKER</h1>
+<canvas id="c" width="400" height="320"></canvas>
+<p>Mouse to move the paddle</p>
+<p><a href="../hub.html">← back to hub</a></p>
+<script>
+const cv=document.getElementById('c'), ctx=cv.getContext('2d');
+let paddle={x:170,w:60}, ball={x:200,y:280,vx:2.4,vy:-3};
+let bricks=[];
+for(let r=0;r<4;r++) for(let c=0;c<8;c++) bricks.push({x:c*48+4, y:r*20+20, alive:true});
+cv.addEventListener('mousemove', e=>{
+  const rect=cv.getBoundingClientRect();
+  paddle.x = e.clientX-rect.left-30;
+});
+function loop(){
+  ball.x+=ball.vx; ball.y+=ball.vy;
+  if(ball.x<=4||ball.x>=396) ball.vx*=-1;
+  if(ball.y<=4) ball.vy*=-1;
+  if(ball.y>=310 && ball.x>paddle.x && ball.x<paddle.x+paddle.w) ball.vy=-Math.abs(ball.vy);
+  bricks.forEach(b=>{
+    if(b.alive && ball.x>b.x && ball.x<b.x+44 && ball.y>b.y && ball.y<b.y+14){
+      b.alive=false; ball.vy*=-1;
+    }
+  });
+  ctx.fillStyle='#0e1420'; ctx.fillRect(0,0,400,320);
+  ctx.fillStyle='#ff4fa3'; bricks.forEach(b=>{ if(b.alive) ctx.fillRect(b.x,b.y,44,12); });
+  ctx.fillStyle='#4ce0d2'; ctx.fillRect(paddle.x,310,paddle.w,6);
+  ctx.beginPath(); ctx.arc(ball.x,ball.y,5,0,7); ctx.fillStyle='#ffd166'; ctx.fill();
+  requestAnimationFrame(loop);
+}
+loop();
+</script>
+</body>
+</html>

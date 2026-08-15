@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pong Blitz</title>
+<style>
+  body { margin:0; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+         background:#0b0e14; color:#4ce0d2; font-family:'JetBrains Mono', monospace; }
+  h1 { text-shadow:0 0 16px rgba(76,224,210,.5); letter-spacing:.06em; }
+  canvas { background:#0e1420; border:1px solid rgba(76,224,210,.3); box-shadow:0 0 30px rgba(76,224,210,.15); }
+  p { color:#7d8b93; font-size:.85rem; }
+  a { color:#ff4fa3; }
+</style>
+</head>
+<body>
+<h1>PONG BLITZ</h1>
+<canvas id="c" width="480" height="320"></canvas>
+<p>W / S to move · first to 5</p>
+<p><a href="../hub.html">← back to hub</a></p>
+<script>
+const cv=document.getElementById('c'), ctx=cv.getContext('2d');
+let p1=140,p2=140,ball={x:240,y:160,vx:3,vy:2},s1=0,s2=0;
+document.addEventListener('keydown',e=>{
+  if(e.key==='w') p1-=24;
+  if(e.key==='s') p1+=24;
+});
+function ai(){ p2 += (ball.y-40 - p2) * 0.06; }
+function loop(){
+  ai();
+  ball.x+=ball.vx; ball.y+=ball.vy;
+  if(ball.y<=0||ball.y>=312) ball.vy*=-1;
+  if(ball.x<=20 && ball.y>p1 && ball.y<p1+80) ball.vx*=-1.05;
+  if(ball.x>=452 && ball.y>p2 && ball.y<p2+80) ball.vx*=-1.05;
+  if(ball.x<0){ s2++; ball={x:240,y:160,vx:3,vy:2}; }
+  if(ball.x>480){ s1++; ball={x:240,y:160,vx:-3,vy:2}; }
+  ctx.fillStyle='#0e1420'; ctx.fillRect(0,0,480,320);
+  ctx.fillStyle='#4ce0d2';
+  ctx.fillRect(10,p1,10,80); ctx.fillRect(460,p2,10,80);
+  ctx.beginPath(); ctx.arc(ball.x,ball.y,6,0,7); ctx.fill();
+  ctx.fillText(s1+' : '+s2, 230, 20);
+  requestAnimationFrame(loop);
+}
+loop();
+</script>
+</body>
+</html>
