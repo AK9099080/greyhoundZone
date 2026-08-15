@@ -1,39 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Game Hub</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="hub-body">
-
-  <div class="crt-overlay" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
-
-  <header>
+<header>
     <img src="media/logo.png" alt="Site Logo" class="logo">
     <h1>Game Hub</h1>
   </header>
 
+  <div class="search-bar">
+    <span class="search-icon" aria-hidden="true">&#9166;</span>
+    <input type="text" id="game-search" placeholder="Search games…" autocomplete="off">
+  </div>
+
   <div id="game-list"></div>
+  <p id="no-results" class="no-results" hidden>No games match "<span id="no-results-query"></span>".</p>
 
   <script>
+    let allGames = [];
+    const container = document.getElementById("game-list");
+    const noResults = document.getElementById("no-results");
+    const noResultsQuery = document.getElementById("no-results-query");
+
+    function renderGames(games) {
+      container.innerHTML = "";
+      games.forEach(game => {
+        const card = document.createElement("div");
+        card.className = "game-card";
+        card.innerHTML = `
+          <img src="media/${game.logo}" alt="${game.name}" class="game-logo">
+          <h3>${game.name}</h3>
+          <a href="games/${game.file}" class="play-btn">Play</a>
+        `;
+        container.appendChild(card);
+      });
+      noResults.hidden = games.length !== 0;
+    }
+
     fetch("games.json")
       .then(res => res.json())
       .then(games => {
-        const container = document.getElementById("game-list");
-        games.forEach(game => {
-          const card = document.createElement("div");
-          card.className = "game-card";
-          card.innerHTML = `
-            <img src="media/${game.logo}" alt="${game.name}" class="game-logo">
-            <h3>${game.name}</h3>
-            <a href="games/${game.file}" class="play-btn">Play</a>
-          `;
-          container.appendChild(card);
-        });
+        allGames = games;
+        renderGames(allGames);
       });
-  </script>
 
-</body>
-</html>
+    document.getElementById("game-search").addEventListener("input", e => {
+      const query = e.target.value.trim().toLowerCase();
+      const filtered = allGames.filter(g => g.name.toLowerCase().includes(query));
+      noResultsQuery.textContent = e.target.value.trim();
+      renderGames(filtered);
+    });
+  </script>
