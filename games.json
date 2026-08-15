@@ -13,5 +13,10 @@
     "name": "Pong Blitz",
     "file": "pong-blitz.html",
     "logo": "pong-blitz.png"
+  },
+  {
+    "name": "Spaceflightsimulator",
+    "file": "spaceflightsimulator.html",
+    "logo": "spaceflightsimulator.jpg"
   }
 ]
