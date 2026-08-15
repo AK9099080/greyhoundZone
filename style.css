@@ -1,3 +1,301 @@
+/* =========================================================
+   TOKENS
+   Decoy: paper + ink + moss, a deliberately unremarkable blog
+   Hub:   CRT arcade — deep navy, neon cyan / magenta
+   ========================================================= */
+:root {
+  --paper: #f2efe6;
+  --ink: #262420;
+  --ink-soft: #5c584f;
+  --moss: #4b5d45;
+  --thread: #8b3a3a;
+  --hairline: #d8d2c1;
+
+  --void: #0b0e14;
+  --void-2: #121826;
+  --neon-cyan: #4ce0d2;
+  --neon-magenta: #ff4fa3;
+  --neon-yellow: #ffd166;
+  --grid-line: rgba(76, 224, 210, 0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* =========================================================
+   DECOY HOMEPAGE — "Kettle & Almanac"
+   ========================================================= */
+.decoy-body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.decoy-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.decoy-header {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.decoy-header .decoy-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.decoy-mark {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+.decoy-nav { display: flex; gap: 28px; font-size: 0.92rem; color: var(--ink-soft); }
+.decoy-nav a:hover { color: var(--moss); }
+
+.decoy-hero { padding: 84px 0 64px; }
+.decoy-eyebrow {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--thread);
+  margin: 0 0 14px;
+}
+.decoy-hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+.decoy-sub {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin: 0;
+}
+
+.decoy-posts { padding: 20px 0 70px; }
+.decoy-grid {
+  display: grid;
+  gap: 36px;
+}
+.decoy-card {
+  padding: 28px 0;
+  border-top: 1px solid var(--hairline);
+}
+.decoy-tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--moss);
+  margin: 0 0 10px;
+}
+.decoy-card h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin: 0 0 10px;
+}
+.decoy-card p { color: var(--ink-soft); margin: 0 0 14px; max-width: 58ch; }
+.decoy-read { font-size: 0.9rem; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
+.decoy-read:hover { color: var(--moss); border-color: var(--moss); }
+
+.decoy-about { background: #ece7d8; padding: 60px 0; }
+.decoy-about-inner { max-width: 620px; }
+.decoy-about h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0 0 14px;
+}
+.decoy-about p { color: var(--ink-soft); margin: 0; }
+
+.decoy-footer { padding: 40px 0 60px; }
+.decoy-footer-inner { display: flex; flex-direction: column; gap: 6px; }
+.decoy-footer p { margin: 0; color: var(--ink-soft); font-size: 0.88rem; }
+
+/* The entire "secret button": a punctuation mark, nothing more */
+.decoy-key {
+  cursor: pointer;
+  color: var(--hairline);
+  padding: 0 2px;
+  transition: color 0.3s ease;
+}
+.decoy-key:hover { color: var(--thread); }
+
+/* =========================================================
+   LOGIN — the hinge between the two worlds
+   ========================================================= */
+.login-body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--void);
+  color: #d8f7f2;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(76, 224, 210, 0.035) 0px,
+    rgba(76, 224, 210, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+}
+
+.login-wrap { position: relative; z-index: 1; padding: 20px; width: 100%; }
+
+.login-card {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 36px 32px;
+  background: var(--void-2);
+  border: 1px solid rgba(76, 224, 210, 0.25);
+  border-radius: 6px;
+  box-shadow: 0 0 40px rgba(76, 224, 210, 0.08);
+}
+
+.login-eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  color: var(--neon-magenta);
+  letter-spacing: 0.05em;
+}
+.login-title {
+  margin: 0 0 26px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 18px rgba(76, 224, 210, 0.5);
+}
+
+.login-form { display: flex; flex-direction: column; gap: 6px; }
+.login-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #7d8b93;
+  margin-top: 14px;
+}
+.login-input {
+  background: #0d1420;
+  border: 1px solid rgba(76, 224, 210, 0.2);
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: #d8f7f2;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.login-input:focus { border-color: var(--neon-cyan); }
+
+.login-btn {
+  margin-top: 24px;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background: var(--neon-cyan);
+  color: #06110f;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.login-btn:hover {
+  box-shadow: 0 0 22px rgba(76, 224, 210, 0.55);
+  transform: translateY(-1px);
+}
+
+.login-hint {
+  margin: 18px 0 0;
+  font-size: 0.74rem;
+  color: #52606b;
+  text-align: center;
+}
+
+/* =========================================================
+   GAME HUB — required structure: header/.logo, #game-list,
+   .game-card / .game-logo / .play-btn
+   ========================================================= */
+.hub-body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, rgba(76, 224, 210, 0.06), transparent 60%),
+    var(--void);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(ellipse at top, rgba(76, 224, 210, 0.06), transparent 60%),
+    var(--void);
+  background-size: 42px 42px, 42px 42px, 100% 100%, 100% 100%;
+  color: #e7fbf7;
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.45) 100%);
+  z-index: 5;
+}
+.scanline {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.06) 3px
+  );
+  z-index: 6;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 6vw 30px;
+  position: relative;
+  z-index: 1;
+}
+header .logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(76, 224, 210, 0.4);
+}
+header h1 {
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  margin: 0;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 16px rgba(76, 224, 210, 0.45);
+}
+
 .search-bar {
   position: relative;
   z-index: 1;
@@ -38,4 +336,83 @@
   margin: 0 6vw 40px;
   color: #7d8b93;
   font-size: 0.9rem;
+}
+
+#game-list {
+  position: relative;
+  z-index: 1;
+  padding: 10px 6vw 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 26px;
+}
+
+.game-card {
+  background: linear-gradient(180deg, #141b28 0%, #0e1420 100%);
+  border: 1px solid rgba(76, 224, 210, 0.18);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.game-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--neon-magenta);
+  box-shadow: 0 12px 30px rgba(255, 79, 163, 0.18), 0 0 0 1px rgba(255, 79, 163, 0.25);
+}
+
+.game-logo {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;   /* scales to each image's own aspect ratio, no cropping */
+  background: #0a0f18;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(76, 224, 210, 0.15);
+}
+
+@media (max-width: 640px) {
+  .game-logo { height: 120px; }
+}
+
+.game-card h3 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #e7fbf7;
+}
+
+.play-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.play-btn:hover {
+  background: var(--neon-cyan);
+  color: #06110f;
+  box-shadow: 0 0 20px rgba(76, 224, 210, 0.5);
+}
+
+/* =========================================================
+   RESPONSIVE + MOTION
+   ========================================================= */
+@media (max-width: 640px) {
+  .decoy-nav { gap: 16px; font-size: 0.85rem; }
+  .decoy-hero { padding: 56px 0 44px; }
+  header { padding: 28px 5vw 20px; }
+  #game-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; padding: 10px 5vw 30px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
 }
