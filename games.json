@@ -1,8 +1,28 @@
 [
   {
+    "name": "Basketrandom",
+    "file": "basketrandom.html",
+    "logo": "basketrandom.png"
+  },
+  {
     "name": "Brick Breaker",
     "file": "brick-breaker.html",
     "logo": "brick-breaker.png"
+  },
+  {
+    "name": "Buckshotroulette",
+    "file": "buckshotroulette.html",
+    "logo": "buckshotroulette.jpg"
+  },
+  {
+    "name": "Leveldevil",
+    "file": "leveldevil.html",
+    "logo": "leveldevil.avif"
+  },
+  {
+    "name": "Motox3m",
+    "file": "motox3m.html",
+    "logo": "motox3m.avif"
   },
   {
     "name": "Neon Snake",
@@ -10,13 +30,53 @@
     "logo": "neon-snake.png"
   },
   {
+    "name": "Ovo",
+    "file": "ovo.html",
+    "logo": "ovo.jpg"
+  },
+  {
+    "name": "Peopleplayground",
+    "file": "peopleplayground.html",
+    "logo": "peopleplayground.jpg"
+  },
+  {
+    "name": "Polytrack",
+    "file": "polytrack.html",
+    "logo": "placeholder.png"
+  },
+  {
     "name": "Pong Blitz",
     "file": "pong-blitz.html",
     "logo": "pong-blitz.png"
   },
   {
+    "name": "Repo",
+    "file": "repo.html",
+    "logo": "repo.webp"
+  },
+  {
     "name": "Spaceflightsimulator",
     "file": "spaceflightsimulator.html",
     "logo": "spaceflightsimulator.jpg"
+  },
+  {
+    "name": "Subwaysurfers",
+    "file": "subwaysurfers.html",
+    "logo": "subwaysurfers.jpg"
+  },
+  {
+    "name": "Superhot",
+    "file": "superhot.html",
+    "logo": "superhot.avif"
+  },
+  {
+    "name": "Superstarcar",
+    "file": "superstarcar.html",
+    "logo": "superstarcar.jpeg"
+  },
+  {
+    "name": "Ultrakill",
+    "file": "ultrakill.html",
+    "logo": "ultrakill.jpg"
   }
 ]
